@@ -2344,10 +2344,10 @@ start:
 	add $s2, $zero, $zero # $s2 stores the number of times the doddler has gone up
 	add $s3, $zero, $zero #  $s3 = 1 iff platforms are falling 0 otherwise
 	add $s4, $zero, $zero # $s4 stores the number of times the platforms went down
-	addi $a0, $zero, 164 # drawing platform at location 129
-	addi $a1, $zero, 565 # drawing platform at location 129
-	addi $a2, $zero, 937 # drawing platform at location 129
-	addi $a3, $zero, -100 # drawing platform at location 129
+	addi $a0, $zero, 164 # drawing platform at location 164
+	addi $a1, $zero, 565 # drawing platform at location 565
+	addi $a2, $zero, 937 # drawing platform at location 937
+	addi $a3, $zero, -100 # drawing platform at location -100
 	jal addPlatforms
 	lw $t0, gameMode
 	beq $t0, 1, main
@@ -2566,10 +2566,12 @@ toggle3:
 	j main
 	
 toggle2:
+	lw $t7, doodler2UpCounter
 	addi $s0, $zero, 0
 	addi $s6, $zero, 0
 	addi $s2, $zero, 0
 	addi $s7, $zero, 0
+	sw $s7, doodler2UpCounter
 	add $s4, $zero, $zero # Reset counter
 	add $s3, $zero, $zero # Toggle $s3
 	lw $t1, platformMid #load mid
